@@ -5,6 +5,7 @@ sc = SparkContext(conf=conf)
 
 lines = sc.textFile("/user/ncn251/u.data")
 movies = lines.map(lambda x: (int(x.split()[1]), 1))
+print("movies=======", movies)
 movieCounts = movies.reduceByKey(lambda x, y: x+y)
 
 flipped = movieCounts.map(lambda x, y: (y, x))
