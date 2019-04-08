@@ -3,7 +3,7 @@ from pyspark.sql import SparkSession
 
 conf = SparkConf().setAppName("validate JSON")
 sc = SparkContext(conf=conf)
-spark = SparkSession().builder.appName(
+spark = SparkSession.builder.appName(
     "validate JSON").config(conf=conf).getOrCreate()
 
 jsonFile = spark.read.option("multiline", "true").json(
